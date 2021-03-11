@@ -1,3 +1,4 @@
+import { PropertyResolver } from "./resolvers/PropertyResover";
 import "dotenv/config";
 import { createConnection } from "typeorm";
 import express from "express";
@@ -11,6 +12,7 @@ import { User } from "./entity/User";
 import { createAccessToken, createRefreshToken } from "./auth";
 import { sendRefreshToken } from "./refresher/sendRefreshToken";
 import cors from "cors";
+import { LandlordResolver } from "./resolvers/LandlordResover";
 (async () => {
   const app = express();
 
@@ -55,14 +57,14 @@ import cors from "cors";
   await createConnection();
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [UserResolver],
+      resolvers: [UserResolver, LandlordResolver, PropertyResolver],
     }),
     context: ({ req, res }) => ({ req, res }),
   });
 
   apolloServer.applyMiddleware({ app, cors: false });
 
-  app.listen(process.env.PORT || 5000, () => {
+  app.listen(process.env.PORT || 4000, () => {
     console.log("Express App is running...");
   });
 })();

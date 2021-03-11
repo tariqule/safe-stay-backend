@@ -1,4 +1,4 @@
-# Awesome Project Build with TypeORM
+# TRUE STAY BACKEND USING EXPRESS, GRAPHQL, TYPEORM, POSTGRES
 
 Steps to run this project:
 
