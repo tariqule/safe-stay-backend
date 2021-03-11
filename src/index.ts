@@ -10,11 +10,19 @@ import { verify } from "jsonwebtoken";
 import { User } from "./entity/User";
 import { createAccessToken, createRefreshToken } from "./auth";
 import { sendRefreshToken } from "./sendRefreshToken";
+import cors from "cors";
 (async () => {
   const app = express();
-  app.use(cookieParser());
+
+  app.use(
+    cors({
+      origin: "http://localhost:3000",
+      credentials: true,
+    })
+  );
   app.get("/", (_req, res) => res.send("hello"));
 
+  app.use(cookieParser());
   app.post("/refresh_token", async (req, res) => {
     console.log(req.cookies);
     const token = req.cookies.qid;
@@ -52,7 +60,7 @@ import { sendRefreshToken } from "./sendRefreshToken";
     context: ({ req, res }) => ({ req, res }),
   });
 
-  apolloServer.applyMiddleware({ app });
+  apolloServer.applyMiddleware({ app, cors: false });
 
   app.listen(process.env.PORT || 5000, () => {
     console.log("Express App is running...");

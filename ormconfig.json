@@ -1,10 +1,10 @@
 {
    "type": "postgres",
-   "host": "ec2-3-213-85-90.compute-1.amazonaws.com",
+   "host": "localhost",
    "port": 5432,
-   "username": "qduyvpamgrvfku",
-   "password": "3c4fd05844a897092b4991ed271a18c39ec855d07c68e5df6d32bc484018ee5a",
-   "database": "d5lrgtodkkl8jr",
+   "username": "tariq",
+   "password": "Shanto@101",
+   "database": "true-stay-db",
    "synchronize": true,
    "logging": false,
    "entities": [
