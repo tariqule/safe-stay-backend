@@ -11,11 +11,11 @@ import {
   UseMiddleware,
 } from "type-graphql";
 import { getConnection } from "typeorm";
-import { createAccessToken, createRefreshToken } from "./auth";
-import { Context } from "./Context";
-import { User } from "./entity/User";
-import { isAuth } from "./isAuthMiddleware";
-import { sendRefreshToken } from "./sendRefreshToken";
+import { createAccessToken, createRefreshToken } from "../auth";
+import { Context } from "../context/Context";
+import { User } from "../entity/User";
+import { isAuth } from "../middleware/isAuthMiddleware";
+import { sendRefreshToken } from "../refresher/sendRefreshToken";
 @ObjectType()
 class LoginResponse {
   @Field()
