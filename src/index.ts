@@ -53,9 +53,8 @@ import { sendRefreshToken } from "./sendRefreshToken";
   });
 
   apolloServer.applyMiddleware({ app });
-  var port = process.env.PORT || 1337;
 
-  app.listen(port, () => {
+  app.listen(process.env.PORT || 5000, () => {
     console.log("Express App is running..." + port);
   });
 })();
